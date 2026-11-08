@@ -1,0 +1,12 @@
+# your private data: never commit
+config/settings.json
+data/
+voice/
+review/
+ICP.md
+PLAN.md
+templates.md
+docs/SOURCING_PLAN.md
+*.tmp
+__pycache__/
+.env

@@ -1,0 +1,119 @@
+{
+  "_comment": "Copy to config/settings.json (git-ignored). PLAN_PROMPT.md fills this in from your interview answers.",
+
+  "owner_name": "Your Name As Shown On LinkedIn",
+  "owner_profile_url": "https://www.linkedin.com/in/your-slug",
+  "account_type": "free",
+  "account_age_years": 3,
+  "timezone_note": "Times below use this computer's local clock.",
+
+  "goal": "Describe the one outcome you want, e.g. 'book 10 intro calls a month with seed-stage fintech founders'.",
+
+  "aggressiveness": "careful",
+  "_aggressiveness_help": "careful | standard | aggressive. See docs/SAFETY.md. Warnings, CAPTCHAs and restrictions always stop everything, at every tier.",
+
+  "tiers": {
+    "careful": {
+      "invites_per_day": 10,
+      "invites_per_week": 50,
+      "messages_per_day": 15,
+      "views_per_day": 40,
+      "sends_per_hour": 5,
+      "min_gap_minutes": 8,
+      "jitter_minutes": 6,
+      "max_actions_per_tick": 1,
+      "pending_invites_max": 300,
+      "min_acceptance_rate": 0.25,
+      "cooldown_hours_after_warning": 168
+    },
+    "standard": {
+      "invites_per_day": 20,
+      "invites_per_week": 80,
+      "messages_per_day": 30,
+      "views_per_day": 80,
+      "sends_per_hour": 8,
+      "min_gap_minutes": 4,
+      "jitter_minutes": 4,
+      "max_actions_per_tick": 2,
+      "pending_invites_max": 400,
+      "min_acceptance_rate": 0.2,
+      "cooldown_hours_after_warning": 72
+    },
+    "aggressive": {
+      "invites_per_day": 25,
+      "invites_per_week": 120,
+      "messages_per_day": 50,
+      "views_per_day": 150,
+      "sends_per_hour": 12,
+      "min_gap_minutes": 2.5,
+      "jitter_minutes": 3,
+      "max_actions_per_tick": 3,
+      "pending_invites_max": 500,
+      "min_acceptance_rate": 0.15,
+      "cooldown_hours_after_warning": 48
+    }
+  },
+  "limit_overrides": {},
+
+  "ramp": {
+    "_help": "New or quiet accounts start at a fraction of the tier caps and step up weekly.",
+    "start_date": null,
+    "week_fractions": [0.5, 0.75, 1.0]
+  },
+
+  "active_days": [0, 1, 2, 3, 4],
+  "_active_days_help": "0 = Monday ... 6 = Sunday",
+  "active_hours": [9, 18],
+  "lunch_break": [12, 13],
+
+  "send_mode": "human",
+  "_send_mode_help": "human = Claude prepares, you paste and click Send. assisted = Claude in Chrome types and clicks Send after you approve each item (or under standing_approval).",
+
+  "standing_approval": {
+    "invites": false,
+    "first_messages": false,
+    "followups": false,
+    "replies": false,
+    "_help": "false = you approve every item. true = Claude may send that kind of item once it passes the gate and lint, inside the pace limits."
+  },
+
+  "sequence": {
+    "connect_with_note": true,
+    "note_char_limit": 200,
+    "free_notes_per_month": 5,
+    "first_message_after_accept_hours": [4, 48],
+    "followup_after_days": [4, 9],
+    "max_followups": 1,
+    "view_profile_before_invite": true
+  },
+
+  "verification": {
+    "require_profile_opened": true,
+    "require_current_role_on_profile": true,
+    "require_second_source": true,
+    "max_days_since_active": 90,
+    "min_connections": 50,
+    "require_photo": true,
+    "require_hook_source": true
+  },
+
+  "drafts": {
+    "message_char_limit": 600,
+    "banned_phrases": [
+      "I hope this message finds you well",
+      "I came across your profile",
+      "quick question",
+      "synergy",
+      "circle back",
+      "touch base",
+      "pick your brain",
+      "I'd love to hop on a call"
+    ],
+    "require_first_name": true
+  },
+
+  "research": {
+    "new_leads_per_tick": 5,
+    "pipeline_buffer": 15
+  }
+}

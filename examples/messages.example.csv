@@ -1,0 +1,6 @@
+CONVERSATION ID,CONVERSATION TITLE,FROM,SENDER PROFILE URL,TO,RECIPIENT PROFILE URLS,DATE,SUBJECT,CONTENT,FOLDER
+c-1,,Taylor Sample,https://www.linkedin.com/in/taylor-sample,Jordan Example,https://www.linkedin.com/in/jordan-example-000,2026-01-03 15:20:11 UTC,,"hey Jordan, thanks for the intro. would love to hear how the pricing change went",INBOX
+c-1,,Jordan Example,https://www.linkedin.com/in/jordan-example-000,Taylor Sample,https://www.linkedin.com/in/taylor-sample,2026-01-03 16:01:42 UTC,,"Happy to! Thursday works.",INBOX
+c-2,,Taylor Sample,https://www.linkedin.com/in/taylor-sample,Riley Test,https://www.linkedin.com/in/riley-test,2026-01-02 10:11:00 UTC,,"appreciate it Riley. sending the doc now, let me know what you think",INBOX
+c-3,,Taylor Sample,https://www.linkedin.com/in/taylor-sample,Casey Demo,https://www.linkedin.com/in/casey-demo,2026-01-01 09:00:00 UTC,,"hey Casey, saw your talk at the meetup. the part on churn cohorts was great. open to a quick chat next week?",INBOX
+c-4,,Taylor Sample,https://www.linkedin.com/in/taylor-sample,Morgan Fake,https://www.linkedin.com/in/morgan-fake,2025-12-28 18:30:00 UTC,,"thanks! will do",INBOX
