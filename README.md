@@ -35,7 +35,7 @@ Python 3.9+ with only the standard library. Nothing to install besides Claude Co
 
 ## Quick start
 ```bash
-git clone https://github.com/<owner>/linkedin-outreach.git
+git clone https://github.com/caidencanales/linkedin-outreach.git
 cd linkedin-outreach
 python tools/selftest.py
 ```
