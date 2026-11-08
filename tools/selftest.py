@@ -88,6 +88,9 @@ def main():
         R("drafts.py", "lint", "li-0001")
 
         R("report.py", "--log")
+        R("leads.py", "set", "li-0001", "variant=A", "invited_at=\"2026-01-05T10:00:00\"")
+        out = R("report.py", "--by", "variant")
+        assert "A" in out and "invited" in out, out
         R("leads.py", "dnc", "https://www.linkedin.com/in/sam-placeholder", "asked not to be contacted")
         out = R("leads.py", "add", json.dumps({"name": "Sam", "profile_url": "https://www.linkedin.com/in/sam-placeholder"}))
         assert "do-not-contact" in out, out

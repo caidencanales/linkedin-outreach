@@ -4,11 +4,11 @@ A kit for running your own LinkedIn outreach with **Claude Code + Claude in Chro
 
 It works in two steps:
 
-1. **[PLAN_PROMPT.md](PLAN_PROMPT.md): the interview.** Claude asks you a long series of questions: what you're really trying to achieve, who you want to reach, whose audience overlaps yours, what you offer, how much account risk you'll accept, what should happen when LinkedIn warns you, how the sequence runs, and who clicks Send. It reads your last 100 sent LinkedIn messages to learn how you write. Then it writes your settings, ideal-lead profile, sourcing plan, voice guide and templates, and does a dry run of 10 leads.
-2. **[LOOP_PROMPT.md](LOOP_PROMPT.md): the loop.** Run with `/loop`, it checks replies and accepts, keeps a pipeline of verified leads, drafts messages, sends approved ones one at a time inside the pace limits, reports, and schedules its own next wakeup.
+1. **[PLAN_PROMPT.md](PLAN_PROMPT.md): the interview.** Claude asks you a long series of questions: what you're really trying to achieve, who you want to reach, whose audience overlaps yours, what you offer, how much account risk you'll accept, what should happen when LinkedIn warns you, how the sequence runs, and who clicks Send. It reads your last 100 sent LinkedIn messages to learn how you write. It researches before it builds anything, writes your brief, settings, ideal-lead profile, sourcing plan and templates, and waits for you to approve the plan. **After approval it does a deeper research pass and improves the system itself** (better sourcing, scoring, templates, tools), using free tools only and never loosening a safety limit without your OK. Then it does a dry run of 10 leads.
+2. **[LOOP_PROMPT.md](LOOP_PROMPT.md): the loop.** Run with `/loop`, it checks replies and accepts, keeps a pipeline of verified leads, drafts messages, sends approved ones one at a time inside the pace limits, reports, and schedules its own next wakeup. Once a week it compares sources and template variants, researches, and improves the system again.
 
 ```
-interview ─> voice ─> plan ─> dry run ─> loop: [safety check → read replies → find + verify → draft → you approve → paced send → report] ↺
+interview ─> voice ─> research ─> plan (you approve) ─> research + improve (free) ─> dry run ─> loop: [safety check → read replies → find + verify → draft → you approve → paced send → report] ↺
 ```
 
 ## Before you start: read [docs/SAFETY.md](docs/SAFETY.md)

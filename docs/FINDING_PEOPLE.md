@@ -11,7 +11,7 @@ The plan prompt turns this into your own `docs/SOURCING_PLAN.md`. Everything her
 5. **Signals outside LinkedIn.** Funding announcements, accelerator batch pages, conference speaker lists, podcast guest lists, award lists, job posts ("hiring a first X"), GitHub or Product Hunt launches. Find the person there, then find their LinkedIn profile.
 6. **Your own network.** 2nd-degree connections who share a mutual connection (ask the mutual for an intro instead of a cold invite when it matters), and 1st-degree connections who fit but you've never messaged.
 
-Log how each lead was found in `source` (with the URL) and which seed in `seed`, so you can later see which sources reply best.
+Log how each lead was found in `source` (with the URL), the kind of source in `source_type` (`seed_commenter`, `seed_network`, `lookalike`, `search`, `signal`, `own_network`, `own_post_engager`), which seed in `seed`, and which template variant was used in `variant`, so you can later see which sources reply best.
 
 ## Verification: every lead, before any draft
 

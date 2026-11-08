@@ -10,3 +10,7 @@ docs/SOURCING_PLAN.md
 *.tmp
 __pycache__/
 .env
+BRIEF.md
+EXPERIMENTS.md
+RESEARCH.md
+IMPROVEMENTS.md

@@ -3,6 +3,8 @@
 This folder runs one person's LinkedIn outreach through Claude in Chrome. Start with `PLAN_PROMPT.md` (interview and setup), then `LOOP_PROMPT.md` (the recurring loop). The owner's own setup lives in `config/settings.json`, `ICP.md`, `PLAN.md`, `templates.md` and `voice/VOICE.md`. If those don't exist yet, run the plan prompt first.
 
 ## Hard rules
+- **Research before you build.** Before creating or changing any tool, prompt, template, setting or sourcing plan, research it first (free sources) and record the finding with its link in `RESEARCH.md`. Then build.
+- **Keep it free.** No paid tools, APIs, data providers or subscriptions unless the owner explicitly says yes. List paid options as optional only.
 - **The tools are the guard rails.** Before every LinkedIn action run `python tools/pace.py check <action>`; right after it, run `python tools/pace.py log <action> --lead <id>`. Never act on a WAIT or STOP verdict. Send only text printed by `python tools/drafts.py text <id> <field>`.
 - **Warnings stop everything.** CAPTCHA, "verify it's you", "unusual activity", restriction, invitation-limit or too-fast notices: run `pace.py warn "<text>"`, stop, and tell the owner. Never solve CAPTCHAs, never click through security prompts, never sign in, never change account settings.
 - **Approval.** Nothing goes out without the owner's approval, unless `standing_approval` in settings covers that kind of item and it passed `leads.py gate` and `drafts.py lint`.

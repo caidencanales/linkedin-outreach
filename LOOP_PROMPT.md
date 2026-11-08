@@ -1,5 +1,7 @@
 # Step 2 of 2: the loop prompt
 
+**Repo:** https://github.com/caidencanales/linkedin-outreach
+
 Use this only after [PLAN_PROMPT.md](PLAN_PROMPT.md) is done: `PLAN.md` approved, `config/settings.json`, `ICP.md`, `voice/VOICE.md` and `templates.md` written, and the dry run sent its first 1–3 messages.
 
 **How to start it:** open Claude Code in this folder, keep Chrome open with Claude in Chrome connected and LinkedIn signed in, then type `/loop` followed by a space and paste everything below the line. With no interval given, `/loop` lets Claude pick when to wake up next, and it uses `tools/pace.py next` to decide. To stop: type `stop the loop`, or create the file `data/STOP` (any content). The tools then refuse every send.
@@ -8,7 +10,7 @@ Keep the computer awake while the loop runs. If Claude's permission checks block
 
 ---
 
-You are running one tick of my LinkedIn outreach loop in this folder. Read `CLAUDE.md`, `PLAN.md`, `ICP.md`, `docs/SOURCING_PLAN.md`, `voice/VOICE.md` and `templates.md` on the first tick of the session (they're short), then do the steps below in order. One tick should take a few minutes, not an hour. Keep each browser step short (under about 40 seconds) and use one LinkedIn tab.
+You are running one tick of my LinkedIn outreach loop in this folder (my clone of https://github.com/caidencanales/linkedin-outreach). Read `CLAUDE.md`, `BRIEF.md`, `PLAN.md`, `ICP.md`, `docs/SOURCING_PLAN.md`, `voice/VOICE.md`, `templates.md` and `EXPERIMENTS.md` on the first tick of the session (they're short), then do the steps below in order. One tick should take a few minutes, not an hour. Keep each browser step short (under about 40 seconds) and use one LinkedIn tab.
 
 **0. Safety first.**
 - Run `python tools/pace.py status`. If it shows the kill switch or an unresolved warning, do no LinkedIn actions: report it in one line and schedule the next wakeup for 60 minutes.
@@ -43,7 +45,17 @@ Do at most `max_actions_per_tick` actions this tick (from the tier in settings),
 4. Right after it goes out: `python tools/pace.py log <action> --lead <id>`, then update the lead (`leads.py status <id> invited|messaged`; for a follow-up, `leads.py set <id> followups_sent=<n> last_followup_at="<now>"`).
 5. Look at the page once more for warning signs (step 0).
 
-**5. Report and schedule the next tick.**
+**4b. Audience growth (only if `BRIEF.md` lists followers or audience as a goal).**
+Once a day, find 3–5 fresh posts from seeds or target people where a real comment would add something. Draft one comment each in my public voice into `review/comments.md` (post link, why it's worth it, the comment). I post them by hand. Never post or comment yourself. People who engage with my own posts and fit `ICP.md` go into the lead pipeline with that engagement as their hook.
+
+**5. Weekly improvement review (first tick on or after Monday morning; skip if `data/log.md` already has one this week).**
+- Run `python tools/report.py --by source_type`, `--by seed` and `--by variant`. Which sources, seeds and template variants get the best acceptance and reply rates? Which lose?
+- Read `EXPERIMENTS.md`. If a test has enough sends, call the winner and propose the next test.
+- Do a short research pass (free web search plus read-only browsing): any LinkedIn limit or policy changes, and new ideas for my goal and niche. Cite sources in `RESEARCH.md`.
+- **Then improve the system, research first.** Nothing gets built without a finding in `RESEARCH.md` behind it. Add findings to `IMPROVEMENTS.md` (impact, effort, cost, account risk), then build the free, safe ones yourself: sourcing, scoring, templates as new variants, reporting, tools. Add a self-test check for each code change, run `python tools/selftest.py`, and commit locally. Stay free: no paid tools, APIs or data unless I said yes. **Ask me first** before anything that raises a limit, weakens the gate, widens standing approvals, removes a warning stop or costs money.
+- Post a 5-line summary in chat (what changed, what's waiting on me) and note "weekly review done" in `data/log.md`.
+
+**6. Report and schedule the next tick.**
 - `python tools/report.py --log`. Post one or two lines in chat: what was sent, replies and accepts, what's waiting on me. Say nothing else if nothing happened.
 - Run `python tools/pace.py next` to get the seconds until the next action is allowed, and schedule the next wakeup for that long (at least 60 seconds, at most 3600; if it prints -1, wake in 60 minutes). If drafts are waiting for my review and nothing can be sent, wake in 30–60 minutes.
 

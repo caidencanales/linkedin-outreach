@@ -15,10 +15,39 @@ from common import ACTIONS_FILE, DATA, LEADS_FILE, iso, load_settings, load_stat
 from pace import decide, invite_health, limits
 
 
+def breakdown(field: str) -> None:
+    """Acceptance and reply rate per value of one lead field (for the weekly review and A/B tests)."""
+    groups: dict[str, list[dict]] = {}
+    for l in read_jsonl(LEADS_FILE):
+        if l.get("invited_at") or l.get("messaged_at"):
+            groups.setdefault(str(l.get(field) or "(none)"), []).append(l)
+    if not groups:
+        print("no contacted leads yet")
+        return
+    print(f"{field:<30} {'invited':>7} {'accepted':>9} {'messaged':>9} {'replied':>8}")
+    rows = []
+    for k, ls in groups.items():
+        inv = [l for l in ls if l.get("invited_at")]
+        acc = sum(1 for l in inv if l.get("connected_at"))
+        msg = [l for l in ls if l.get("messaged_at")]
+        rep = sum(1 for l in msg if l.get("replied_at"))
+        rows.append((rep / len(msg) if msg else 0, k, len(inv), acc, len(msg), rep))
+    for _, k, inv, acc, msg, rep in sorted(rows, reverse=True):
+        pct = lambda a, b: f"{a} ({a / b:.0%})" if b else "-"
+        print(f"{k[:30]:<30} {inv:>7} {pct(acc, inv):>9} {msg:>9} {pct(rep, msg):>8}")
+    small = [k for _, k, inv, _, msg, _ in rows if max(inv, msg) < 20]
+    if small:
+        print(f"note: under 20 contacts for {len(small)} group(s); too few to call a winner")
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--log", action="store_true")
+    p.add_argument("--by", help="break down results by a lead field, e.g. source_type, seed, variant, segment")
     a = p.parse_args()
+    if a.by:
+        breakdown(a.by)
+        return
     s = load_settings()
     lim = limits(s)
     t = now()
